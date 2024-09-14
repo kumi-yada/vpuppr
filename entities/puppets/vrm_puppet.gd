@@ -334,4 +334,17 @@ func handle_meow_face(raw_data: PackedByteArray) -> void:
 	handle_vtube_studio(raw_data)
 
 func handle_open_see_face(raw_data: PackedByteArray) -> void:
-	print(raw_data)
+	var parser = OpenSeeFaceParser.new()
+	var all_data := parser.parse_open_see_face_data(raw_data)
+	if all_data.is_empty():
+		return
+	
+	var data = all_data[0] as OpenSeeFaceParser.OSFData
+	
+	# See: https://github.com/emilianavt/OpenSeeFaceSample/blob/master/Assets/OpenSeeFace/OpenSeeIKTarget.cs
+	
+	ik_targets.head.call_deferred(
+		"set_rotation_degrees",
+		Vector3(-data.rotation.x, data.rotation.y, data.rotation.z) - _ik_target_offsets.head.basis.get_euler(EULER_ORDER_YXZ)
+	)
+	#ik_targets.head.call_deferred("set_position", _ik_target_offsets.head.origin + data.translation)

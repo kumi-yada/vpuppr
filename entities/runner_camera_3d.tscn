@@ -17,5 +17,6 @@ mesh = SubResource("BoxMesh_nuau3")
 
 [node name="Pyramid" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(-3.65873e-08, -2.19608e-09, 0.75, 0.75, -2.98023e-08, 3.65873e-08, 2.98023e-08, 0.75, 2.19608e-09, 0, 0, -0.2)
+visible = false
 mesh = SubResource("PrismMesh_dsosy")
 skeleton = NodePath("../..")

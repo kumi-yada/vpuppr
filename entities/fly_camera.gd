@@ -6,6 +6,9 @@ extends Camera3D
 const SPEED: float = 5.0
 const SHIFT_MULTI: float = 3.0
 
+const MOUSE_SENS_Y := 0.2
+const MOUSE_SENS_X := 0.3
+
 var _mouse_motion := Vector2.ZERO
 
 #-----------------------------------------------------------------------------#
@@ -29,8 +32,8 @@ func _input(event: InputEvent) -> void:
 		_mouse_motion = event.relative
 
 func _physics_process(delta: float) -> void:
-	rotate_y(-_mouse_motion.x * delta)
-	rotate_object_local(Vector3.RIGHT, -_mouse_motion.y * delta)
+	rotate_y(-_mouse_motion.x * delta * MOUSE_SENS_X)
+	rotate_object_local(Vector3.RIGHT, -_mouse_motion.y * delta * MOUSE_SENS_Y)
 	
 	_mouse_motion = Vector2.ZERO
 	

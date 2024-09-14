@@ -3,6 +3,7 @@ extends Node3D
 
 ## A runner for 3D models.
 
+const NAME := &"FlyCamera"
 const RenIK: GDScript = preload("res://addons/renik/renik.gd")
 
 @onready
@@ -26,10 +27,9 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	# TODO testing
-	if event.keycode == KEY_0 and event.pressed:
-		fly_camera(true)
 	elif event.keycode == KEY_1 and event.pressed:
-		fly_camera(false)
+		var camera = get_node_or_null(NodePath(NAME))
+		fly_camera(camera == null)
 
 #-----------------------------------------------------------------------------#
 # Private functions
@@ -41,7 +41,6 @@ func _input(event: InputEvent) -> void:
 
 ## Enable/disable a flying camera for inspecting the runner.
 func fly_camera(enabled: bool) -> Error:
-	const NAME := &"FlyCamera"
 	if enabled:
 		_logger.info("Enabling fly camera")
 		
