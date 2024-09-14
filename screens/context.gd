@@ -233,6 +233,13 @@ func start_tracker(tracker: AbstractTracker.Trackers) -> Error:
 				return ERR_CANT_CREATE
 
 			tracker_instance.data_received.connect(model.handle_ifacial_mocap)
+		AbstractTracker.Trackers.OPEN_SEE_FACE:
+			tracker_instance = OpenSeeFace.start(runner_data.common_options.open_see_face_options)
+			if tracker_instance == null:
+				_logger.error("Unable to start OpenSeeFace")
+				return ERR_CANT_CREATE
+
+			tracker_instance.data_received.connect(model.handle_open_see_face)
 		_:
 			_logger.error("Unhandled tracker: {0}".format([tracker]))
 			

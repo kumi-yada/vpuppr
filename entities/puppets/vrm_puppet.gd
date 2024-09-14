@@ -282,7 +282,7 @@ func handle_ifacial_mocap(raw_data: PackedByteArray) -> void:
 			
 			blend_shape_mapping.child.set_indexed(blend_shape_mapping.property_path, data.blend_shapes[shape])
 
-func handle_mediapipe(projection: Projection, blend_shapes: Array[MediaPipeCategory]) -> void:
+func handle_mediapipe(projection: Projection, blend_shapes: Array) -> void:
 	var tx := Transform3D(projection.inverse())
 	
 	print("rotation")
@@ -334,4 +334,4 @@ func handle_meow_face(raw_data: PackedByteArray) -> void:
 	handle_vtube_studio(raw_data)
 
 func handle_open_see_face(raw_data: PackedByteArray) -> void:
-	pass
+	print(raw_data)

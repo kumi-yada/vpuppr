@@ -27,7 +27,7 @@ func _find_skeleton() -> Skeleton3D:
 func handle_ifacial_mocap(raw_data: PackedByteArray) -> void:
 	var data := DataParser.ifacial_mocap(raw_data)
 
-func handle_mediapipe(projection: Projection, blend_shapes: Array[MediaPipeCategory]) -> void:
+func handle_mediapipe(projection: Projection, blend_shapes: Array) -> void:
 	pass
 
 func handle_vtube_studio(raw_data: PackedByteArray) -> void:

@@ -80,6 +80,8 @@ func _ready() -> void:
 					option_name = option_name.format({v = "vtube_studio_options"})
 				Trackers.MEOW_FACE:
 					option_name = option_name.format({v = "meow_face_options"})
+				Trackers.OPEN_SEE_FACE:
+					option_name = option_name.format({v = "open_see_face_options"})
 				_:
 					_logger.error("Unhandled update for {tracker}".format({tracker = tracker}))
 					return

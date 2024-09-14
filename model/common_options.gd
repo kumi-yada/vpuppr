@@ -15,6 +15,9 @@ var vtube_studio_options := VTubeStudioOptions.new()
 ## Options for MeowFace tracking.
 @export
 var meow_face_options := MeowFaceOptions.new()
+## Options for OpenSeeFace tracking.
+@export
+var open_see_face_options := OpenSeeFaceOptions.new()
 
 ## Options for configuring the [WorldEnvironment] [Environment].
 @export

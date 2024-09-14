@@ -1,24 +1,25 @@
-class_name TrackingGui
-extends Control
+extends TrackingGui
 
-## A pseudo-interface that all tracking GUIs should extend.
-
-## The tracker was started.
-signal started(tracker: Trackers)
-# TODO you-win (nov 19, 2023): this should be used instead of the current workaround in tracking.gd
-## The tracker was stopped.
-signal stopped(tracker: Trackers)
-## A saveable property was changed.
-signal property_changed(tracker: Trackers, key: String, value: Variant)
-
-const Trackers := AbstractTracker.Trackers
-
-@onready
-var start := %Start
+@onready var port := %Port
+@onready var address: LineEdit = %Address
 
 #-----------------------------------------------------------------------------#
 # Builtin functions
 #-----------------------------------------------------------------------------#
+
+func _ready() -> void:
+	address.text_changed.connect(func(text: String):
+		property_changed.emit(Trackers.OPEN_SEE_FACE, &"address", text)
+	)
+	port.text_changed.connect(func(text: String) -> void:
+		if not text.is_valid_int():
+			return
+		property_changed.emit(Trackers.OPEN_SEE_FACE, &"port", text.to_int())
+	)
+	
+	start.pressed.connect(func() -> void:
+		started.emit(Trackers.OPEN_SEE_FACE)
+	)
 
 #-----------------------------------------------------------------------------#
 # Private functions
@@ -29,4 +30,4 @@ var start := %Start
 #-----------------------------------------------------------------------------#
 
 func get_type() -> Trackers:
-	return Trackers.NONE
+	return Trackers.OPEN_SEE_FACE

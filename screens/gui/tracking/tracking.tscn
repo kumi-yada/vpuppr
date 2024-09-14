@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh021kchsnxmp"]
+[gd_scene load_steps=8 format=3 uid="uid://bh021kchsnxmp"]
 
 [ext_resource type="Script" path="res://screens/gui/tracking/tracking.gd" id="1_8t3ha"]
 [ext_resource type="Script" path="res://screens/gui/h_split_tree.gd" id="2_3hpoo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dftm3gsyqsr2d" path="res://screens/gui/tracking/media_pipe.tscn" id="3_lttak"]
 [ext_resource type="PackedScene" uid="uid://dhpmnehqrnqpg" path="res://screens/gui/tracking/vtube_studio.tscn" id="5_nod0u"]
 [ext_resource type="PackedScene" uid="uid://b3dxeudwr6rlg" path="res://screens/gui/tracking/i_facial_mocap.tscn" id="6_cbemn"]
+[ext_resource type="Script" path="res://screens/gui/tracking/open_see_face.gd" id="7_gryj7"]
 
 [node name="Tracking" type="VBoxContainer"]
 anchors_preset = 15
@@ -49,13 +50,63 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="MediaPipe" parent="HSplitTree/Pages" instance=ExtResource("3_lttak")]
+visible = false
 layout_mode = 2
 
 [node name="MeowFace" parent="HSplitTree/Pages" instance=ExtResource("2_r6snh")]
+visible = false
 layout_mode = 2
 
 [node name="VTubeStudio" parent="HSplitTree/Pages" instance=ExtResource("5_nod0u")]
+visible = false
 layout_mode = 2
 
 [node name="IFacialMocap" parent="HSplitTree/Pages" instance=ExtResource("6_cbemn")]
+visible = false
 layout_mode = 2
+
+[node name="OpenSeeFace" type="VBoxContainer" parent="HSplitTree/Pages"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("7_gryj7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HSplitTree/Pages/OpenSeeFace"]
+layout_mode = 2
+focus_mode = 2
+text = "Start OpenSeeFace tracking."
+fit_content = true
+selection_enabled = true
+
+[node name="Address" type="HBoxContainer" parent="HSplitTree/Pages/OpenSeeFace"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitTree/Pages/OpenSeeFace/Address"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "IP Address"
+
+[node name="Address" type="LineEdit" parent="HSplitTree/Pages/OpenSeeFace/Address"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "127.0.0.1"
+
+[node name="Port" type="HBoxContainer" parent="HSplitTree/Pages/OpenSeeFace"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitTree/Pages/OpenSeeFace/Port"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Port"
+
+[node name="Port" type="LineEdit" parent="HSplitTree/Pages/OpenSeeFace/Port"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "11573"
+
+[node name="Start" type="Button" parent="HSplitTree/Pages/OpenSeeFace"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start"

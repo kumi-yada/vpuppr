@@ -1,21 +1,16 @@
-class_name Puppet3DData
-extends PuppetData
+class_name OpenSeeFaceOptions
+extends Resource
 
+## The IP address to connect to.
 @export
-var position := Vector3.ZERO
-
-## The name of the head bone.
+var address := "127.0.0.1"
+## The port to connect to.
 @export
-var head_bone := ""
-@export
-var ik_targets := IKTargets3D.new()
+var port: int = 11573
 
 #-----------------------------------------------------------------------------#
 # Builtin functions
 #-----------------------------------------------------------------------------#
-
-func _init() -> void:
-	pass
 
 #-----------------------------------------------------------------------------#
 # Private functions

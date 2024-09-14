@@ -14,7 +14,7 @@ config/name="Virtual Puppet Project"
 run/main_scene="res://screens/splash.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="vpuppr"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
 [autoload]
@@ -37,7 +37,7 @@ script/templates_search_path="res://script-templates"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GDMP/plugin.cfg", "res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/vrm/plugin.cfg")
+enabled=PackedStringArray("res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/vrm/plugin.cfg")
 
 [filesystem]
 
